@@ -10,16 +10,14 @@
 			<h2 class="text-2xl mb-3">Игроки</h2>
 			<ul class="space-y-1 mb-3">
 				<li v-for="player, idx in players" :key="player.id" class="p-1 border border-neutral-400 leading-tight">
-					<button class="absolute top-1 right-1" @click="players.splice(idx, 1)">Удалить</button>
+					<button class="absolute bottom-1 right-1" @click="players.splice(idx, 1)">Удалить</button>
 					<input type="text" class="bg-transparent text-lg font-medium block" v-model="player.name">
 					{{ format(timePerPlayer) }}
 				</li>
 			</ul>
 			<form @submit.prevent="addNewPlayer">
-				<div class="flex gap-x-1">
-					<input v-model="newPlayerName" type="text" class="bg-transparent grow border border-neutral-400 px-1" placeholder="Имя">
-					<button type="submit" class="transition ease-in-out duration-300 bg-neutral-400 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded px-2">Добавить</button>
-				</div>
+				<input v-model="newPlayerName" type="text" class="bg-transparent border-b border-neutral-400 px-1 w-full" placeholder="Имя">
+				<button type="submit" class="w-full mt-1 transition ease-in-out duration-300 bg-neutral-400 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-600 rounded px-2">Добавить</button>
 			</form>
 		</div>
 	</Card>
