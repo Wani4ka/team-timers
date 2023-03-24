@@ -107,6 +107,8 @@ const { format, formatMillis } = useTimeFormatter()
 const launched = ref(false)
 let tween: gsap.core.Tween
 
+const audio = new Audio('/assets/sounds/next.wav')
+
 const findNextAvailablePlayer = () => {
 	for (let i = currentPlayer.value + 1; i < players.value.length; ++i)
 		if (players.value[i].timeLeft > 0)
@@ -137,7 +139,10 @@ const delay = () => {
 		duration: Math.floor(players.value[currentPlayer.value].timeLeft / 1000),
 		timeLeft: 0,
 		ease: 'none',
-		onComplete: next
+		onComplete: () => {
+			next()
+			audio.play()
+		},
 	})
 }
 
