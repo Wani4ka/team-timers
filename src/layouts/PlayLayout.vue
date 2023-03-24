@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<div class="grid grid-cols-2 sm:grid-cols-5 gap-1 md:gap-3 justify-center select-none">
+		<div class="grid grid-cols-2 sm:grid-cols-5 gap-1 md:gap-3 place-content-around select-none">
 			<div v-for="player, idx in players" class="w-[10vw] min-w-[125px] text-center p-1" :class="{
 				'bg-neutral-800 text-black': player.timeLeft <= 0,
 				'bg-neutral-600 text-white': player.timeLeft > 0 && currentPlayer !== idx,
 				'bg-blue-400 text-black': currentPlayer === idx,
 			}" @click="currentPlayer = idx">
-				<h2 class="text-3xl">{{ player.name }}</h2>
-				<span class="text-2xl tabular-nums">{{ format(player.timeLeft) }}</span>.<span class="text-xl tabular-nums">{{ formatMillis(player.timeLeft) }}</span>
+				<h2 class="text-2xl text-truncate">{{ player.name }}</h2>
+				<span class="text-xl tabular-nums">{{ format(player.timeLeft) }}</span>.<span class="text-lg tabular-nums">{{ formatMillis(player.timeLeft) }}</span>
 			</div>
 		</div>
 		<div class="w-full mt-8 text-white text-center tabular-nums select-none">
